@@ -1,5 +1,5 @@
 <?php
-namespace foleni\client\utils;
+namespace foleni\client;
 /**
  * A utility to stream a file into another for testing purposes
  *
@@ -12,7 +12,7 @@ use \ZMQSocket;
 use \ZMQ;
 
 class Pusher {
-	public function stream($namespace="") { 
+	public function stream($namespace = "") {
 
 		$context = new ZMQContext();
 		$socket = new ZMQSocket($context, ZMQ::SOCKET_PUSH);
@@ -21,6 +21,6 @@ class Pusher {
 		$fh = fopen("php://stdin", "r");
 		while ($data = fgets($fh)) {
 			$socket->send($data);
-		} 
-	} 
+		}
+	}
 }

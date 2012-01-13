@@ -1,7 +1,0 @@
-#!/opt/local/bin/php
-<?php
-	require __DIR__ . '/../foleni/server/Pooler.php';
-	 
-	
-	$util = new foleni\server\Pooler();
-	$util->stream();

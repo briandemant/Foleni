@@ -12,8 +12,8 @@ use \ZMQSocket;
 use \ZMQ;
 use \ZMQPoll;
 
-class Pooler {
-	public function stream($namespace="") {
+class Poller {
+	public function stream($namespace = "") {
 		$context = new ZMQContext();
 		$socket = new ZMQSocket($context, ZMQ::SOCKET_PULL);
 		$socket->bind("tcp://*:5555");
@@ -23,9 +23,9 @@ class Pooler {
 		$poll->add(STDIN, ZMQ::POLL_IN);
 		$readable = $writeable = array();
 
-		while(true) {
+		while (true) {
 			$events = $poll->poll($readable, $writeable);
-			if($readable[0] === $socket) {
+			if ($readable[0] === $socket) {
 				echo "ZMQ: " . $readable[0]->recv();
 			} else {
 				echo "STDIN: " . fgets($readable[0]);
