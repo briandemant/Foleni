@@ -1,12 +1,8 @@
-#!/usr/bin/env php
+#!/opt/local/bin/php
 <?php
-	require __DIR__ . '/../src/client/utils/StreamToFile.php';
+	require __DIR__ . '/../foleni/client/utils/Pusher.php';
+	 
 	
-	$from = fopen('php://stdin', 'r');
-	$to = fopen('php://stdout', 'w');
-	$minPause = 1000;
-	$maxPause = 10000;
-	
-	//$util -> new StreamToFile();
-	//$util->stream($from,$to,$minPause,$maxPause);
+	$util = new foleni\client\utils\Pusher();
+	$util->stream();
 	

@@ -1,5 +1,5 @@
 <?php
-namespace Foleni\client\utils;
+namespace foleni\client\utils;
 /**
  * A utility to stream a file into another for testing purposes
  *
@@ -7,8 +7,12 @@ namespace Foleni\client\utils;
  * @since	 2012-01-13
  */
 
+use \ZMQContext;
+use \ZMQSocket;
+use \ZMQ;
+
 class Pusher {
-	public function stream($namespace) { 
+	public function stream($namespace="") { 
 
 		$context = new ZMQContext();
 		$socket = new ZMQSocket($context, ZMQ::SOCKET_PUSH);
